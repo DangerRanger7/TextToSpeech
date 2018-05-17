@@ -25,20 +25,31 @@ public class MainActivity extends Activity {
         editText = findViewById(R.id.text_editText);
 
         //speak button
-        findViewById(R.id.speak_button);/*.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.speak_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+                    Toast.makeText(getApplicationContext(), "Feature is not supported by your device",
+                            Toast.LENGTH_LONG).show();
+                }else{
+                    text = editText.getText().toString();
+                    textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                }
             }
-        });*/
+        });
 
         //stop button
-        findViewById(R.id.stop_button);/*.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.stop_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                if (textToSpeech != null){
+                    textToSpeech.stop();
+                }
+
             }
-        });*/
+        });
 
         //textToSpeech section -->> checks if device supports it
         textToSpeech = new TextToSpeech(MainActivity.this, new TextToSpeech.OnInitListener() {
@@ -48,35 +59,11 @@ public class MainActivity extends Activity {
                     //sets language
                     result = textToSpeech.setLanguage(Locale.US);
                 }else{
-                    Toast.makeText(getApplicationContext(), "Feauture is not supported by your device",
+                    Toast.makeText(getApplicationContext(), "Feature is not supported by your device",
                             Toast.LENGTH_LONG).show();
                 }
             }
         });
-    }
-
-    public void TTS(View view){
-        //check view ID
-        switch(view.getId()){
-
-            //speak button
-            case R.id.speak_button:
-                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
-                    Toast.makeText(getApplicationContext(), "Feauture is not supported by your device",
-                            Toast.LENGTH_LONG).show();
-                }else{
-                    text = editText.getText().toString();
-                    textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                }
-                break;
-
-            //stop button
-            case R.id.stop_button:
-                if (textToSpeech != null){
-                    textToSpeech.stop();
-                }
-                break;
-        }
     }
 
     @Override
