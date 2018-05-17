@@ -18,4 +18,24 @@
         android:ems="10"
         android:inputType="text"
         android:text="Enter Text" />
+
+    <Button
+        android:id="@+id/speak_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/text_editText"
+        android:layout_below="@+id/text_editText"
+        android:layout_marginTop="26dp"
+        android:text="Speak"
+        android:onClick="TTS"/>
+
+    <Button
+        android:id="@+id/stop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/speak_button"
+        android:layout_marginStart="88dp"
+        android:layout_toEndOf="@+id/speak_button"
+        android:text="STOP"
+        android:onClick="TTS"/>
 </RelativeLayout>
