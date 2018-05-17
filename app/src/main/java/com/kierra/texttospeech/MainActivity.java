@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
         //initialize editText
         editText = findViewById(R.id.text_editText);
 
-        //speak button
+        //speak button -->> read the text in the EditText
         findViewById(R.id.speak_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        //stop button
+        //stop button -->> stop reading text in the EditText
         findViewById(R.id.stop_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +47,14 @@ public class MainActivity extends Activity {
                 if (textToSpeech != null){
                     textToSpeech.stop();
                 }
+            }
+        });
 
+        //clear button -->> clear text in edit text
+        findViewById(R.id.clear_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText("");
             }
         });
 
