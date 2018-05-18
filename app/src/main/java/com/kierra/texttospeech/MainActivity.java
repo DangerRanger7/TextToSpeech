@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
                     textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                 }
             }
-        });
+        });         
 
         //stop button -->> stop reading text in the EditText
         findViewById(R.id.stop_button).setOnClickListener(new View.OnClickListener() {
